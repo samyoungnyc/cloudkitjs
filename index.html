@@ -9,11 +9,15 @@ The main HTML file of the CloudKit Catalog sample app.
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>CloudKit Catalog</title>
+    <title>CloudKit Test</title>
     <link rel="stylesheet" href="css/cloudkit-catalog.css">
 </head>
 <body>
-    <div id="apple-sign-in-button"></div><span id="username"></span>
+    <div id="apple-sign-in-button"></div>
+    <div id="apple-sign-out-button"></div>
+    <span id="username"></span>
+    <br>
+    
     <script>
         /*
          * Initialize the global objects we will need.
@@ -29,20 +33,90 @@ The main HTML file of the CloudKit Catalog sample app.
             };
         }
     </script>
+    
+    <script language ="JavaScript">              
+
+        function demoPerformQuery() {
+
+          var container = CloudKit.getDefaultContainer();
+          var publicDB = container.publicCloudDatabase;
+
+          // The location of WWDC.
+          var location = {
+            latitude: 37.784108,
+            longitude: 122.401257
+          };
+
+          // Set up a query that sorts results in ascending distance from the
+          // above location.
+          var query = {
+            recordType: 'Items',
+            sortBy: [{
+              fieldName: 'location',
+              relativeLocation: location
+            }]
+          };
+
+          // Execute the query.
+          return publicDB.performQuery(query)
+            .then(function (response) {
+              if(response.hasErrors) {
+
+                // Handle them in your app.
+                throw response.errors[0];
+
+              } else {
+                var records = response.records;
+                var numberOfRecords = records.length;
+                if (numberOfRecords === 0) {        
+                  return render('No matching items')
+                } else {        
+                    
+
+                  var el = render('Found ' + numberOfRecords + ' matching item'
+                    + (numberOfRecords > 1 ? 's' : ''));
+
+                 
+
+                  records.forEach(function (record) {
+                    var fields = record.fields;
+                    alert("fields " + fields['name'].value)
+                    el.appendChild(renderItem(
+                      fields['name'].value,
+                      fields['location'].value,
+                      fields['asset'].value.downloadURL
+                    ));
+                  });
+                  alert("el is:" + el)
+                  return el;
+                }
+              }
+            });
+        }
+                
+    </script>
+    
+    <form name="myform" id="myform">
+        <input class="itext" type="text" name="search_text" id="search_text" value=""/>
+        <input type="button" class="ibutton" onclick="demoPerformQuery()" name="Search" id="Search" value="Search">
+    </form>
+
+
 
     <script src="js/init.js"></script>
     <script src="js/cloudkit-code-samples/authentication.js"></script>
-   <!-- <script src="js/cloudkit-code-samples/discoverability.js"></script>
-    <script src="js/cloudkit-code-samples/public-query.js"></script>
-    <script src="js/cloudkit-code-samples/private-zones.js"></script>
-    <script src="js/cloudkit-code-samples/private-records.js"></script>
-    <script src="js/cloudkit-code-samples/private-sync.js"></script>
-    <script src="js/cloudkit-code-samples/private-subscriptions.js"></script>
-    script src="js/ui-utils/dialog.js"></script>
-    <script src="js/ui-utils/table.js"></script>
-    <script src="js/ui-utils/form.js"></script>
-    <script src="js/cloudkit-code-samples/notifications.js"></script> 
-    <script src="js/ui-utils/tab-manager.js"></script> -->
+   <script src="js/cloudkit-code-samples/public-query.js"></script>
+    
+    <!-- <script src="js/cloudkit-code-samples/private-zones.js"></script>
+    // <script src="js/cloudkit-code-samples/private-records.js"></script>
+    // <script src="js/cloudkit-code-samples/discoverability.js"></script>
+    // <script src="js/cloudkit-code-samples/private-sync.js"></script>
+    // <script src="js/cloudkit-code-samples/private-subscriptions.js"></script>
+    // script src="js/ui-utils/dialog.js"></script>
+    // <script src="js/ui-utils/table.js"></script>
+    // <script src="js/ui-utils/form.js"></script>
+    // <script src="js/cloudkit-code-samples/notifications.js"></script> 
+    // <script src="js/ui-utils/tab-manager.js"></script> -->
     <script>
         window.addEventListener('cloudkitloaded',CKCatalog.init);
     </script>
