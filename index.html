@@ -1,0 +1,53 @@
+<!--
+Copyright (C) 2015 Apple Inc. All Rights Reserved.
+See LICENSE.txt for this sample’s licensing information
+
+Abstract:
+The main HTML file of the CloudKit Catalog sample app.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CloudKit Catalog</title>
+    <link rel="stylesheet" href="css/cloudkit-catalog.css">
+</head>
+<body>
+    <div id="apple-sign-in-button"></div><span id="username"></span>
+    <script>
+        /*
+         * Initialize the global objects we will need.
+         */
+        if(typeof CKCatalog === 'undefined') {
+            CKCatalog = {};
+        }
+
+        if(typeof CKCatalog.tabs === 'undefined') {
+            CKCatalog.tabs = {
+                'readme': [{}],
+                'not-found': [{}]
+            };
+        }
+    </script>
+
+    <script src="js/init.js"></script>
+    <script src="js/cloudkit-code-samples/authentication.js"></script>
+   <!-- <script src="js/cloudkit-code-samples/discoverability.js"></script>
+    <script src="js/cloudkit-code-samples/public-query.js"></script>
+    <script src="js/cloudkit-code-samples/private-zones.js"></script>
+    <script src="js/cloudkit-code-samples/private-records.js"></script>
+    <script src="js/cloudkit-code-samples/private-sync.js"></script>
+    <script src="js/cloudkit-code-samples/private-subscriptions.js"></script>
+    script src="js/ui-utils/dialog.js"></script>
+    <script src="js/ui-utils/table.js"></script>
+    <script src="js/ui-utils/form.js"></script>
+    <script src="js/cloudkit-code-samples/notifications.js"></script> 
+    <script src="js/ui-utils/tab-manager.js"></script> -->
+    <script>
+        window.addEventListener('cloudkitloaded',CKCatalog.init);
+    </script>
+    <script async src="https://cdn.apple-cloudkit.com/ck/1/cloudkit.js"></script>
+
+</body>
+</html>
+
