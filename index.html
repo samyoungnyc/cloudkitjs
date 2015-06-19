@@ -14,81 +14,88 @@ The main HTML file of the CloudKit Catalog sample app.
 </head>
 <body>
 
-    <script>
-        /*
-         * Initialize the global objects we will need.
-         */
-        if(typeof CKCatalog === 'undefined') {
-            CKCatalog = {};
-        }
 
-        if(typeof CKCatalog.tabs === 'undefined') {
-            CKCatalog.tabs = {
-                'readme': [{}],
-                'not-found': [{}]
-            };
-        }
- //    </script>
+<script>
+    /*
+     * Initialize the global objects we will need.
+     */
+    if (typeof CKCatalog === 'undefined') {
+        CKCatalog = {};
+    }
+
+    if (typeof CKCatalog.tabs === 'undefined') {
+        CKCatalog.tabs = {
+            'readme': [{}],
+            'not-found': [{}]
+        };
+    }
+</script>
     
-  <script>              
-    
-        function readQuery() {
+<script>
+    function readQuery() {
 
-          var container = CloudKit.getDefaultContainer();
-          var publicDB = container.publicCloudDatabase;
+        var container = CloudKit.getDefaultContainer();
+        var publicDB = container.publicCloudDatabase;
 
-          // Set up a query that sorts results in ascending distance from the
-          // above location.
-          var query = {
+        // Set up a query that sorts results in ascending distance from the
+        // above location.
+        var query = {
             recordType: 'Locations'
-          };
+        };
 
-          // Execute the query.
-          return publicDB.performQuery(query)
-            .then(function (response) {
-              if(response.hasErrors) {
+        // Execute the query.
+        return publicDB.performQuery(query)
+            .then(function(response) {
+                if (response.hasErrors) {
 
-                // Handle them in your app.
-                throw response.errors[0];
+                    // Handle them in your app.
+                    throw response.errors[0];
 
-              } else {
-                var records = response.records;
-                var numberOfRecords = records.length;
-
-                if (numberOfRecords === 0) {        
-                  return render('No matching locations')
                 } else {
-                  var startOfTable = "<table border=1>"
-                  document.write(startOfTable);
+                    var records = response.records;
+                    var numberOfRecords = records.length;
 
-                  var tableHead = "<td style='width: 100px'>Place Name</td>"; 
-                  tableHead += "<td>Category</td>"; tableHead += "<td>Address</td>";
-                  tableHead += "<td>City</td>"; tableHead += "<td>State</td>";
-                  tableHead += "<td style='width: 100px'>Zip Code</td>"; tableHead += "<td>Country</td>";
-                  tableHead += "<td>Days and Hours</td>"; tableHead += "<td>Contact</td>";
-                  tableHead += "<td>Phone</td>"; tableHead += "<td>Email</td>";
-                  tableHead += "<td>Site</td>"; tableHead += "<td>Facebook</td>";
-                  tableHead += "<td>Twitter</td>"; tableHead += "<td>Instagram</td>";
-                  tableHead += "<td>Latitude</td>"; tableHead += "<td>Longitude</td>";
-                  tableHead += "<td>Notes</td></tr>"; 
+                    if (numberOfRecords === 0) {
+                        return render('No matching locations')
+                    } else {
+                        var startOfTable = "<table border=1>"
+                        document.write(startOfTable);
+
+                        var tableHead = "<td style='width: 100px'>Place Name</td>";
+                        tableHead += "<td>Category</td>";
+                        tableHead += "<td>Address</td>";
+                        tableHead += "<td>City</td>";
+                        tableHead += "<td>State</td>";
+                        tableHead += "<td style='width: 100px'>Zip Code</td>";
+                        tableHead += "<td>Country</td>";
+                        tableHead += "<td>Days and Hours</td>";
+                        tableHead += "<td>Contact</td>";
+                        tableHead += "<td>Phone</td>";
+                        tableHead += "<td>Email</td>";
+                        tableHead += "<td>Site</td>";
+                        tableHead += "<td>Facebook</td>";
+                        tableHead += "<td>Twitter</td>";
+                        tableHead += "<td>Instagram</td>";
+                        tableHead += "<td>Latitude</td>";
+                        tableHead += "<td>Longitude</td>";
+                        tableHead += "<td>Notes</td></tr>";
 
 
-                  document.write(tableHead);
+                        document.write(tableHead);
 
-                  records.forEach(function (record) {
-                    var fields = record.fields;
-                      var tableActual = "<tr><td>" + fields['placeName'].value + "</td><td>" + fields['category'].value + "</td><td>" + fields['address'].value + "</td><td>" + fields['city'].value + "</td><td>" + fields['state'].value + "</td><td>" + fields['zipCode'].value + "</td><td>" + fields['country'].value + "</td><td>" + fields['daysHours'].value + "</td><td>" + fields['contact'].value + "</td><td>" + fields['phone'].value + "</td><td>" + fields['email'].value + "</td><td>" + fields['site'].value + "</td><td>" + fields['facebook'].value + "</td><td>" + fields['twitter'].value + "</td><td>" + fields['instagram'].value + "</td><td>" + fields['location'].value + "</td><td>" + fields['location'].value + "</td><td>" + fields['notes'].value +"</td></tr>"
+                        records.forEach(function(record) {
+                            var fields = record.fields;
+                            var tableActual = "<tr><td>" + fields['placeName'].value + "</td><td>" + fields['category'].value + "</td><td>" + fields['address'].value + "</td><td>" + fields['city'].value + "</td><td>" + fields['state'].value + "</td><td>" + fields['zipCode'].value + "</td><td>" + fields['country'].value + "</td><td>" + fields['daysHours'].value + "</td><td>" + fields['contact'].value + "</td><td>" + fields['phone'].value + "</td><td>" + fields['email'].value + "</td><td>" + fields['site'].value + "</td><td>" + fields['facebook'].value + "</td><td>" + fields['twitter'].value + "</td><td>" + fields['instagram'].value + "</td><td>" + fields['location'].value + "</td><td>" + fields['location'].value + "</td><td>" + fields['notes'].value + "</td></tr>"
 
-                      document.write(tableActual)
-                    });
-            var endOfTable = "</table>"
-            document.write(endOfTable);
+                            document.write(tableActual)
+                        });
+                        document.write("</table>");
 
+                    }
                 }
-              }
             });
-        }
-  </script> 
+    }
+</script>
  
     <div id="apple-sign-in-button"></div>
     <div id="apple-sign-out-button"></div>
