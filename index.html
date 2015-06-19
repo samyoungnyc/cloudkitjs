@@ -14,22 +14,21 @@ The main HTML file of the CloudKit Catalog sample app.
 </head>
 <body>
 
+    <script>
+        /*
+         * Initialize the global objects we will need.
+         */
+        if(typeof CKCatalog === 'undefined') {
+            CKCatalog = {};
+        }
 
-<script>
-    /*
-     * Initialize the global objects we will need.
-     */
-    if (typeof CKCatalog === 'undefined') {
-        CKCatalog = {};
-    }
-
-    if (typeof CKCatalog.tabs === 'undefined') {
-        CKCatalog.tabs = {
-            'readme': [{}],
-            'not-found': [{}]
-        };
-    }
-</script>
+        if(typeof CKCatalog.tabs === 'undefined') {
+            CKCatalog.tabs = {
+                'readme': [{}],
+                'not-found': [{}]
+            };
+        }
+   </script>
     
 <script>
     function readQuery() {
@@ -61,24 +60,24 @@ The main HTML file of the CloudKit Catalog sample app.
                         var startOfTable = "<table border=1>"
                         document.write(startOfTable);
 
-                        var tableHead = "<td style='width: 100px'>Place Name</td>";
-                        tableHead += "<td>Category</td>";
-                        tableHead += "<td>Address</td>";
-                        tableHead += "<td>City</td>";
-                        tableHead += "<td>State</td>";
-                        tableHead += "<td style='width: 100px'>Zip Code</td>";
-                        tableHead += "<td>Country</td>";
-                        tableHead += "<td>Days and Hours</td>";
-                        tableHead += "<td>Contact</td>";
-                        tableHead += "<td>Phone</td>";
-                        tableHead += "<td>Email</td>";
-                        tableHead += "<td>Site</td>";
-                        tableHead += "<td>Facebook</td>";
-                        tableHead += "<td>Twitter</td>";
-                        tableHead += "<td>Instagram</td>";
-                        tableHead += "<td>Latitude</td>";
-                        tableHead += "<td>Longitude</td>";
-                        tableHead += "<td>Notes</td></tr>";
+                        var tableHead = "<tr><th style='width: 100px'>Place Name</th>";
+                        tableHead += "<th>Category</th>";
+                        tableHead += "<th>Address</th>";
+                        tableHead += "<th>City</th>";
+                        tableHead += "<th>State</th>";
+                        tableHead += "<th style='width: 100px'>Zip Code</th>";
+                        tableHead += "<th>Country</th>";
+                        tableHead += "<th>Days and Hours</th>";
+                        tableHead += "<th>Contact</th>";
+                        tableHead += "<th>Phone</th>";
+                        tableHead += "<th>Email</th>";
+                        tableHead += "<th>Site</th>";
+                        tableHead += "<th>Facebook</th>";
+                        tableHead += "<th>Twitter</th>";
+                        tableHead += "<th>Instagram</th>";
+                        tableHead += "<th>Latitude</th>";
+                        tableHead += "<th>Longitude</th>";
+                        tableHead += "<th>Notes</th></tr>";
 
 
                         document.write(tableHead);
