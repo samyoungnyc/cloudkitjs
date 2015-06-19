@@ -30,27 +30,17 @@ The main HTML file of the CloudKit Catalog sample app.
         }
  //    </script>
     
-  <script language ="JavaScript">              
+  <script>              
     
-        function demoPerformQuery() {
+        function readQuery() {
 
           var container = CloudKit.getDefaultContainer();
           var publicDB = container.publicCloudDatabase;
 
-          // The location of WWDC.
-          var location = {
-            latitude: 37.784108,
-            longitude: 122.401257
-          };
-
           // Set up a query that sorts results in ascending distance from the
           // above location.
           var query = {
-            recordType: 'Items',
-            sortBy: [{
-              fieldName: 'location',
-              relativeLocation: location
-            }]
+            recordType: 'Locations'
           };
 
           // Execute the query.
@@ -64,81 +54,46 @@ The main HTML file of the CloudKit Catalog sample app.
               } else {
                 var records = response.records;
                 var numberOfRecords = records.length;
+
                 if (numberOfRecords === 0) {        
-                  return render('No matching items')
-                } else {        
-                                 
+                  return render('No matching locations')
+                } else {
+                  var startOfTable = "<table border=1>"
+                  document.write(startOfTable);
+
+                  var tableHead = "<td style='width: 100px'>Place Name</td>"; 
+                  tableHead += "<td>Category</td>"; tableHead += "<td>Address</td>";
+                  tableHead += "<td>City</td>"; tableHead += "<td>State</td>";
+                  tableHead += "<td style='width: 100px'>Zip Code</td>"; tableHead += "<td>Country</td>";
+                  tableHead += "<td>Days and Hours</td>"; tableHead += "<td>Contact</td>";
+                  tableHead += "<td>Phone</td>"; tableHead += "<td>Email</td>";
+                  tableHead += "<td>Site</td>"; tableHead += "<td>Facebook</td>";
+                  tableHead += "<td>Twitter</td>"; tableHead += "<td>Instagram</td>";
+                  tableHead += "<td>Latitude</td>"; tableHead += "<td>Longitude</td>";
+                  tableHead += "<td>Notes</td></tr>"; 
+
+
+                  document.write(tableHead);
 
                   records.forEach(function (record) {
                     var fields = record.fields;
-                    alert("fields " + fields['name'].value)
-                    el.appendChild(renderItem(
-                      fields['name'].value,
-                      fields['location'].value,
-                      fields['asset'].value.downloadURL
-                    ));
-                  });
-                  alert("el is:" + el)
-                  return el;
+                      var tableActual = "<tr><td>" + fields['placeName'].value + "</td><td>" + fields['category'].value + "</td><td>" + fields['address'].value + "</td><td>" + fields['city'].value + "</td><td>" + fields['state'].value + "</td><td>" + fields['zipCode'].value + "</td><td>" + fields['country'].value + "</td><td>" + fields['daysHours'].value + "</td><td>" + fields['contact'].value + "</td><td>" + fields['phone'].value + "</td><td>" + fields['email'].value + "</td><td>" + fields['site'].value + "</td><td>" + fields['facebook'].value + "</td><td>" + fields['twitter'].value + "</td><td>" + fields['instagram'].value + "</td><td>" + fields['location'].value + "</td><td>" + fields['location'].value + "</td><td>" + fields['notes'].value +"</td></tr>"
+
+                      document.write(tableActual)
+                    });
+            var endOfTable = "</table>"
+            document.write(endOfTable);
+
                 }
               }
             });
         }
-            
   </script> 
-
-  <script>
-
-var myArray    = new Array();
-    myArray[0] = "The Garden";
-    myArray[1] = 2.218;
-    myArray[2] = 33;
-    myArray[3] = 114.94;
-    myArray[4] = 5;
-    myArray[5] = 33;
-    myArray[6] = 114.980;
-    myArray[7] = 5;
-
-    var myTable= "<table><tr><th style='width: 100px; color: red;'>ID</th>";
-    myTable+= "<th style='width: 100px; color: red; text-align: left;'>Place Name</th>";
-    myTable+="<th style='width: 100px; color: red; text-align: left;'>Category</th>";
-    myTable+="<th style='width: 100px; color: red; text-align: left;'>Address</th>";
-    myTable+="<th style='width: 100px; color: red; text-align: left;'>City</th>";
-    myTable+="<th style='width: 100px; color: red; text-align: left;'>State</th>";
-    myTable+="<th style='width: 100px; color: red; text-align: left;'>Zip Code</th>";
-    myTable+="<th style='width: 100px; color: red; text-align: left;'>Country</th>";
-    myTable+="<th style='width: 100px; color: red; text-align: left;'>Days and Hours</th>";
-    myTable+="<th style='width: 100px; color: red; text-align: left;'>Contact</th>";
-    myTable+="<th style='width: 100px; color: red; text-align: left;'>Phone</th>";
-    myTable+="<th style='width: 100px; color: red; text-align: left;'>Email</th>";
-    myTable+="<th style='width: 100px; color: red; text-align: left;'>Site</th>";
-    myTable+="<th style='width: 100px; color: red; text-align: left;'>Facebook</th>";
-    myTable+="<th style='width: 100px; color: red; text-align: left;'>Twitter</th>";
-    myTable+="<th style='width: 100px; color: red; text-align: left;'>Instagram</th>";
-    myTable+="<th style='width: 100px; color: red; text-align: left;'>Latitude</th>";
-    myTable+="<th style='width: 100px; color: red; text-align: left;'>Longitude</th>";
-    myTable+="<th style='width: 100px; color: red; text-align: left;'>Notes</th></tr>";
-
-
-
-  for (var i=0; i<8; i++) {
-    myTable+="<tr><td style='width: 100px;'> " + i + " </td>";
-
-    myTable+="<td style='width: 100px; text-align: left;'>" + myArray[i] + "</td>";
-    myTable+="<td style='width: 100px; text-align: left;'>" + myArray[i] + "</td>";
-    myTable+="<td style='width: 100px; text-align: left;'>" + myArray[i] + "</td></tr>";
-
-  }  
-   myTable+="</table>";
-
- document.write( myTable);
-
-//-->
-</script> 
-
+ 
     <div id="apple-sign-in-button"></div>
     <div id="apple-sign-out-button"></div>
-    <span id="username"></span>
+    <span id="username"></span><br><br>
+    <button type="button" onclick="readQuery()">Get Table</button>
     <br>
   
   <script src="js/init.js"></script>
