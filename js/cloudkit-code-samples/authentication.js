@@ -41,8 +41,13 @@ CKCatalog.tabs['authentication'] = (function() {
       function gotoAuthenticatedState(userInfo) {
         if(userInfo.isDiscoverable) {
           displayUserName(userInfo.firstName + ' ' + userInfo.lastName);
+          console.log("igh")
+          window.location.href = 'table.html';
+
         } else {
           displayUserName('User record name: ' + userInfo.userRecordName);
+          console.log("igh")
+          window.location.href = 'table.html';
         }
         container
           .whenUserSignsOut()
@@ -54,6 +59,7 @@ CKCatalog.tabs['authentication'] = (function() {
           .whenUserSignsIn()
           .then(gotoAuthenticatedState)
           .catch(gotoUnauthenticatedState);
+
       }
 
       // Check a user is signed in and render the appropriate button.
@@ -71,7 +77,7 @@ CKCatalog.tabs['authentication'] = (function() {
         });
     }
   };
-
+        
   return [ authSample ];
 
 })();
