@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CloudKit Test</title>
+    <link rel="stylesheet" href="css/cloudkit-catalog.css">
+</head>
+<body>
+
+    <script>
+        /*
+         * Initialize the global objects we will need.
+         */
+        if(typeof CKCatalog === 'undefined') {
+            CKCatalog = {};
+        }
+
+        if(typeof CKCatalog.tabs === 'undefined') {
+            CKCatalog.tabs = {
+                'readme': [{}],
+                'not-found': [{}]
+            };
+        }
+   </script>
+
+    <div id="apple-sign-in-button"></div>
+    <div id="apple-sign-out-button"></div><br>
+    <span id="username"></span><br><br>
+
+   <form>
+        Place Name: <input type="text" name="placeName" id="placeName">
+        State: <input type="text" name="state" id="state">
+        Zip: <input type="text" name="zipCode" id="zipCode">
+
+        <input type="submit" value="Submit" onclick="saveRecord(this.form.placeName.value,this.form.state.value,this.form.zipCode.value)">
+
+    </form>
+ 
+  <script src="js/init.js"></script>
+  <script src="js/cloudkit-code-samples/authentication.js"></script>
+  <script src="js/cloudkit-code-samples/add-record.js"></script>
+    
+    <script>
+        window.addEventListener('cloudkitloaded',CKCatalog.init);
+    </script>
+    <script async src="https://cdn.apple-cloudkit.com/ck/1/cloudkit.js"></script>
+
+</body>
+</html>
+
