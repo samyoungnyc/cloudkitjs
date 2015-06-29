@@ -6,17 +6,10 @@ function readQuery() {
 
     var query = {
         recordType: 'Locations',
-<<<<<<< HEAD
         sortBy: [{
              fieldName: '___createTime', 
                 ascending: false
         }]
-=======
-        // sortBy: [{
-        //     fieldName: ['created']
-        // }]
->>>>>>> 0f09d64c706488b7b0fa94132a997db007bfa733
-    };
 
     // Execute the query.
     return publicDB.performQuery(query)
