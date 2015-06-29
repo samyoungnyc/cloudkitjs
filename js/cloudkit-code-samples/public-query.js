@@ -6,10 +6,10 @@ function readQuery() {
 
     var query = {
         recordType: 'Locations',
-        sortBy: [{
-             fieldName: '___createTime', 
-                ascending: false
+        sortBy: [{ fieldName: '___createTime',
+        ascending: true 
         }]
+    };
 
     // Execute the query.
     return publicDB.performQuery(query)
@@ -29,8 +29,6 @@ function readQuery() {
 
                     var tableHead = "<tr><th style='width: 100px'>ID</th>";
                     tableHead += "<th>Place Name</th>";
-                    var tableHead = "<tr><th style='width: 100px'>Place Name</th>";
-                    tableHead += "<th>Category</th>";
                     tableHead += "<th>Category</th>";
                     tableHead += "<th>Address</th>";
                     tableHead += "<th>City</th>";
@@ -63,5 +61,4 @@ function readQuery() {
                 }
             }
         });
-}
 }
