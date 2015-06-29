@@ -6,10 +6,16 @@ function readQuery() {
 
     var query = {
         recordType: 'Locations',
+<<<<<<< HEAD
         sortBy: [{
              fieldName: '___createTime', 
                 ascending: false
         }]
+=======
+        // sortBy: [{
+        //     fieldName: ['created']
+        // }]
+>>>>>>> 0f09d64c706488b7b0fa94132a997db007bfa733
     };
 
     // Execute the query.
@@ -28,8 +34,13 @@ function readQuery() {
                     var startOfTable = "<table border=1>"
                     document.write(startOfTable);
 
+<<<<<<< HEAD
                     var tableHead = "<tr><th style='width: 100px'>ID</th>";
                     tableHead += "<th>Place Name</th>";
+=======
+                    var tableHead = "<tr><th style='width: 100px'>Place Name</th>";
+                    tableHead += "<th>Category</th>";
+>>>>>>> 0f09d64c706488b7b0fa94132a997db007bfa733
                     tableHead += "<th>Category</th>";
                     tableHead += "<th>Address</th>";
                     tableHead += "<th>City</th>";
@@ -54,7 +65,10 @@ function readQuery() {
                     records.forEach(function(record) {
                         var fields = record.fields;
                         var tableActual = "<tr><td>" + record['created'].timestamp + "</td><<td>" + fields['placeName'].value + "</td><td>" + fields['category'].value + "</td><td>" + fields['address'].value + "</td><td>" + fields['city'].value + "</td><td>" + fields['state'].value + "</td><td>" + fields['zipCode'].value + "</td><td>" + fields['country'].value + "</td><td>" + fields['daysAndHours'].value + "</td><td>" + fields['contact'].value + "</td><td>" + fields['phone'].value + "</td><td>" + fields['email'].value + "</td><td>" + fields['site'].value + "</td><td>" + fields['facebook'].value + "</td><td>" + fields['twitter'].value + "</td><td>" + fields['instagram'].value + "</td><td>" + fields['location'].value + "</td><td>" + fields['location'].value + "</td><td>" + fields['notes'].value + "</td><td><button>Delete</button></td></tr>"
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0f09d64c706488b7b0fa94132a997db007bfa733
                         document.write(tableActual)
                     });
                     var endOfTable = "</table>"
@@ -62,4 +76,8 @@ function readQuery() {
                 }
             }
         });
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 0f09d64c706488b7b0fa94132a997db007bfa733
