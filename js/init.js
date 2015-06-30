@@ -1,14 +1,4 @@
-/*
-Copyright (C) 2015 Apple Inc. All Rights Reserved.
-See LICENSE.txt for this sample’s licensing information
 
-Abstract:
-The first use of the CloudKit namespace should be to set the configuration parameters.
-*/
-
-/**
- * This function is run immediately after CloudKit has loaded.
- */
 CKCatalog.init = function() {
   try {
 
@@ -20,7 +10,7 @@ CKCatalog.init = function() {
         containerIdentifier: 'iCloud.computer.perma-cloud',
 
         // And generate an API token through CloudKit Dashboard.
-        apiToken: 'f87615ca1664ecb6c9c4492e68765556458733532e241a1e2e0d09d805a5092e',
+        apiToken: 'c1fdb30bc021d61b9fd3e7b5b22f0261da353a487cc21ded2b09de5189bd9041',
 
         auth: {
           buttonSize: 'medium',

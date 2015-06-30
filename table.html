@@ -1,10 +1,4 @@
-<!--
-Copyright (C) 2015 Apple Inc. All Rights Reserved.
-See LICENSE.txt for this sample’s licensing information
 
-Abstract:
-The main HTML file of the CloudKit Catalog sample app.
--->
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,9 +9,8 @@ The main HTML file of the CloudKit Catalog sample app.
 <body onload="readQuery()">
 
     <script>
-        /*
-         * Initialize the global objects we will need.
-         */
+
+
         if(typeof CKCatalog === 'undefined') {
             CKCatalog = {};
         }
@@ -33,10 +26,9 @@ The main HTML file of the CloudKit Catalog sample app.
     <div id="apple-sign-in-button"></div>
     <div id="apple-sign-out-button"></div><br>
     <span id="username"></span><br><br>
-<!--     <button type="button" onclick="readQuery()">Get Table</button>
- -->	
-  <script src="js/init.js"></script>
-  <script src="js/cloudkit-code-samples/authentication.js"></script>
+    
+  <script src="js/init.js"></script> 
+  <script src="js/cloudkit-code-samples/authentication.js"></script> 
   <script src="js/cloudkit-code-samples/public-query.js"></script>
     
     <!-- <script src="js/cloudkit-code-samples/private-zones.js"></script>
