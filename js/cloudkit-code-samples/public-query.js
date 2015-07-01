@@ -49,7 +49,10 @@ function readQuery() {
                         var tableActual = "<tr><td>" + record['created'].timestamp + "</td><td>" + fields['placeName'].value + "</td><td>" + fields['category'].value + "</td><td>" + fields['address'].value + "</td><td>" + fields['city'].value + "</td><td>" + fields['state'].value + "</td><td>" + fields['zipCode'].value + "</td><td>" + fields['country'].value + "</td><td>" + fields['daysAndHours'].value + "</td><td>" + fields['contact'].value + "</td><td>" + fields['phone'].value + "</td><td>" + fields['email'].value + "</td><td>" + fields['site'].value + "</td><td>" + fields['facebook'].value + "</td><td>" + fields['twitter'].value + "</td><td>" + fields['instagram'].value + "</td><td>" + fields['notes'].value + "</td><td><button>Delete</button></td></tr></table>";
 
                         document.write(tableActual);
-                    });al
+                    });
+
+                    var endOfTable = "</table>";
+                    document.write(endOfTable);
                 }
             }
         });
