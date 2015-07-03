@@ -10,7 +10,7 @@ CKCatalog.init = function() {
         containerIdentifier: 'iCloud.computer.perma-cloud',
 
         // And generate an API token through CloudKit Dashboard.
-        apiToken: 'd5dbeee0209a5715835442067c9b36386cb611a2924575b6709fb0a737f79da3',
+        apiToken: '81ba8c7f88736ce19abe519911286ff08152119dbff0d18527c0a4277a8f67d8',
 
         auth: {
           buttonSize: 'medium',
